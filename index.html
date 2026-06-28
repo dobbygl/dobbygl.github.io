@@ -87,13 +87,13 @@
     margin:0 0 1.1rem;
   }
   .crumb::before{content:"~ ";opacity:.55}
-  .night .crumb{color:var(--amber)}
+  .night .crumb{color:#FFD27A}
 
   .eyebrow-note{
     font-family:"Space Mono",ui-monospace,monospace;
     font-size:.74rem;color:var(--ink-soft);letter-spacing:.02em;
   }
-  .night .eyebrow-note{color:var(--cream-soft)}
+  .night .eyebrow-note{color:#E6EFE7}
 
   /* ---------- botones ---------- */
   .btn{
@@ -111,8 +111,19 @@
   .btn .arrow{transition:transform .18s var(--ease)}
   .btn:hover .arrow{transform:translateX(3px)}
   .btn--ghost{--bg:transparent;--fg:var(--ink);--bd:var(--ink)}
-  .night .btn--ghost{--fg:var(--cream);--bd:var(--cream-soft)}
+  .night .btn--ghost{
+    --bg:rgba(251,244,230,.10);
+    --fg:var(--cream);
+    --bd:var(--amber);
+    box-shadow:0 0 0 1px rgba(242,169,59,.16) inset;
+  }
   .btn--ghost:hover{--bg:transparent;color:var(--ember);border-color:var(--ember);box-shadow:none}
+  .night .btn--ghost:hover{
+    --bg:var(--amber);
+    color:var(--dusk);
+    border-color:var(--amber);
+    box-shadow:0 12px 24px -14px var(--amber);
+  }
   .btn--sm{font-size:.9rem;padding:.6em .95em;border-radius:10px}
 
   /* ---------- nav ---------- */
@@ -176,14 +187,22 @@
   }
   .photo-cap{
     position:absolute;left:14px;bottom:14px;z-index:2;
-    font-family:"Space Mono",monospace;font-size:.72rem;line-height:1.35;
-    color:var(--cream);background:rgba(10,18,20,.72);
+    font-family:"Space Mono",monospace;font-size:.76rem;line-height:1.4;
+    color:var(--cream);background:rgba(10,18,20,.82);
     border:1px solid var(--dusk-line);border-radius:9px;padding:.5em .7em;max-width:78%;
   }
   .photo-cap b{color:var(--amber);font-weight:400}
   @media (max-width:860px){
     .hero .wrap{grid-template-columns:1fr;text-align:left}
     .frame{order:-1;max-width:420px}
+  }
+  @media (max-width:640px){
+    .hero{padding-top:clamp(36px,7vw,56px)}
+    .hero .wrap{gap:1.35rem}
+    .frame{order:0;max-width:340px;margin-top:.4rem}
+    .frame img{aspect-ratio:4/4.7}
+    .photo-cap{font-size:.82rem;max-width:86%;padding:.6em .75em}
+    .hero-note{font-size:.8rem}
   }
 
   /* ---------- about ---------- */
