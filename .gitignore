@@ -1,2 +1,13 @@
 # nada que ignorar por ahora
 .DS_Store
+
+# notas internas de diseno: no se publican
+PRODUCT.md
+DESIGN.md
+.impeccable/
+
+# perfil de navegador creado por error al abrir una pagina local; no es parte de la web
+"/
+
+# notas de procedencia de las imagenes generadas: se quedan en local
+assets/**/*.json
