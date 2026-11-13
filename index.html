@@ -97,6 +97,15 @@
   .note > .paper{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
     filter:drop-shadow(0 6px 10px var(--shadow))}
   .hand{font-family:var(--hand);color:var(--ink);font-weight:500}
+  /* el texto vive en una caja con la forma y el giro reales del papel de la imagen,
+     y dentro de ella en la zona libre de imán, márgenes y garabatos impresos */
+  .ink{position:absolute;left:calc(var(--cx) - var(--pw) / 2);top:calc(var(--cy) - var(--ph) / 2);
+    width:var(--pw);height:var(--ph);rotate:var(--a);transform-origin:50% 50%}
+  .safe{position:absolute;left:var(--sl);right:var(--sr);top:var(--st);bottom:var(--sb);
+    display:flex;flex-direction:column;min-width:0}
+  .lined{--cx:49.65%;--cy:48.67%;--pw:78.72%;--ph:88.35%;--a:-8.1deg}
+  .slipped{--cx:49.64%;--cy:44.29%;--pw:85.21%;--ph:79.22%;--a:-6.5deg}
+  .grid{--cx:50.34%;--cy:50.3%;--pw:80.64%;--ph:91.35%;--a:5.3deg}
 
   /* imanes de etiqueta y de enlace, dibujados en código */
   .magnet{
@@ -152,17 +161,16 @@
   .nav li:nth-child(1){rotate:-2deg}.nav li:nth-child(2){rotate:1deg}.nav li:nth-child(3){rotate:-1deg}
 
   .n-head{aspect-ratio:892/752}
-  .n-head h1{position:absolute;left:14.5%;top:21%;width:78%;margin:0;
-    font-size:8.7cqi;line-height:1.5;font-weight:500;letter-spacing:0;
-    rotate:-4deg;transform-origin:0 0}
+  .n-head .safe{--sl:13%;--sr:5%;--st:17%;--sb:17%;justify-content:center}
+  .n-head h1{margin:0;font-size:7.25cqi;line-height:1.45;font-weight:500;letter-spacing:0}
   .n-head h1 span{display:block;white-space:nowrap}
 
   .n-follow{aspect-ratio:812/332}
-  .n-follow .ttl{position:absolute;left:23.5%;top:27%;margin:0;font-size:7.8cqi;line-height:1;rotate:-2deg;white-space:nowrap}
-  .n-follow ul{position:absolute;left:16%;top:51%;width:68%;margin:0;padding:0;list-style:none;
-    display:flex;justify-content:center;gap:7%;rotate:-2deg}
+  .n-follow .safe{--sl:12%;--sr:10%;--st:25%;--sb:13%;align-items:center;justify-content:center;gap:.6cqi}
+  .n-follow .ttl{margin:0 6cqi 0 0;font-size:7.1cqi;line-height:1;white-space:nowrap}
+  .n-follow ul{margin:0;padding:0;list-style:none;display:flex;justify-content:center;gap:4.5cqi}
   .n-follow a{display:inline-flex;align-items:center;gap:.35em;font-family:var(--hand);font-weight:600;
-    font-size:4.8cqi;color:var(--ink);text-decoration:none;padding:.15em 0;white-space:nowrap}
+    font-size:4.25cqi;color:var(--ink);text-decoration:none;padding:.15em 0;white-space:nowrap}
   .n-follow a:hover{text-decoration:underline}
   .n-follow .ico{width:1.35em;height:1.35em}
   .n-follow li:first-child .ico{color:#111}
@@ -175,9 +183,9 @@
   .play-pol:hover .play-magnet{translate:-50% -54%;scale:1.06}
 
   .n-chores{aspect-ratio:696/636}
-  .n-chores h2{position:absolute;left:15.5%;top:17%;margin:0;font-size:10.5cqi;line-height:1;font-weight:500}
-  .chores{position:absolute;left:11.5%;top:35%;width:80%;margin:0;padding:0;list-style:none;
-    font-family:var(--hand);color:var(--ink);font-size:8.4cqi;line-height:1.05}
+  .n-chores .safe{--sl:9%;--sr:7%;--st:14%;--sb:12%;gap:4cqi}
+  .n-chores h2{margin:0;font-size:10cqi;line-height:1;font-weight:500}
+  .chores{margin:0;padding:0;list-style:none;font-family:var(--hand);color:var(--ink);font-size:8.2cqi;line-height:1.08}
   .chores li{display:flex;gap:.45em;align-items:flex-start;margin:0 0 .26em}
   .chores svg{width:.9em;height:.9em;flex:none;margin-top:.08em}
   .chores .t{background:linear-gradient(currentColor,currentColor) 0 62%/100% .09em no-repeat;
@@ -240,8 +248,8 @@
   .sec{max-width:1120px;margin:0 auto;padding:clamp(72px,9vw,128px) 16px 0}
   .slip{position:relative;container-type:inline-size;aspect-ratio:812/332;width:min(100%,420px);margin:0 auto clamp(28px,4vw,48px);--r:-2deg}
   .slip > .paper{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 6px 10px var(--shadow))}
-  .slip h2{position:absolute;inset:22% 8% 20%;margin:0;display:flex;align-items:center;justify-content:center;
-    font-family:var(--hand);font-weight:600;color:var(--ink);font-size:13cqi;line-height:1;rotate:-2deg}
+  .slip .safe{--sl:12%;--sr:10%;--st:27%;--sb:15%;align-items:center;justify-content:center}
+  .slip h2{margin:0;font-family:var(--hand);font-weight:600;color:var(--ink);font-size:11cqi;line-height:1;white-space:nowrap}
 
   .game{display:grid;gap:44px;align-items:center;margin:0 0 clamp(56px,7vw,96px)}
   .game .shots{position:relative;padding:14px 8px 0}
@@ -307,7 +315,9 @@
 
     <div class="note n-head hang">
       <img class="paper" src="assets/plates/note-headline.webp" alt="" width="892" height="752">
-      <h1 class="hand"><span>Ordeno la casa.</span> <span>En mis ratos libres</span> <span>hago videojuegos.</span></h1>
+      <div class="ink lined"><div class="safe">
+        <h1 class="hand"><span>Ordeno la casa.</span> <span>En mis ratos libres</span> <span>hago videojuegos.</span></h1>
+      </div></div>
     </div>
 
     <div class="play-wrap">
@@ -321,22 +331,26 @@
 
     <div class="note n-follow hang">
       <img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332">
+      <div class="ink slipped"><div class="safe">
       <p class="ttl hand">Seguir a Dobby</p>
       <ul>
         <li><a href="https://www.tiktok.com/@dobbydev" target="_blank" rel="noopener"><span class="ico i-tiktok" aria-hidden="true"></span>@dobbydev<span class="sr"> en TikTok</span></a></li>
         <li><a href="https://www.instagram.com/dobbygd/" target="_blank" rel="noopener"><span class="ico i-ig" aria-hidden="true"></span>@dobbygd<span class="sr"> en Instagram</span></a></li>
       </ul>
+      </div></div>
     </div>
 
     <div class="pair">
       <div class="note n-chores hang">
         <img class="paper" src="assets/plates/note-chores.webp" alt="" width="696" height="636">
+        <div class="ink grid"><div class="safe">
         <h2 class="hand">Lista de hoy:</h2>
         <ul class="chores" id="chores">
           <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 3.2 17 2.6l.4 14.6-14.6.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.5 10.4l3.2 3.4L16.8 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="t">fregar</span></li>
           <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.8 2.8 17.2 3.3l-.3 14.3-14.4-.3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.6 10.2l3 3.6 8-10.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="t">tender</span></li>
           <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.4 3 17.1 2.7l.2 14.7-14.7-.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.4 10.6l3.3 3.2 8.2-10.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="t">arreglar el menú del móvil</span></li>
         </ul>
+        </div></div>
       </div>
       <div class="note n-draw hang" style="--pin:58% 5%">
         <img class="paper" src="assets/plates/kid-drawing.webp" alt="Dibujo infantil a ceras de Dobby: un elfo sonriente de orejas grandes y túnica, con un sol y un corazón." width="636" height="572">
@@ -372,7 +386,7 @@
 
 <main>
   <section class="sec" id="juegos" aria-labelledby="juegos-t">
-    <div class="slip hang"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><h2 id="juegos-t">Mis juegos</h2></div>
+    <div class="slip hang"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><div class="ink slipped"><div class="safe"><h2 id="juegos-t">Mis juegos</h2></div></div></div>
 
     <article class="game" id="cozy-adventure">
       <div class="shots">
@@ -453,7 +467,7 @@
   </section>
 
   <section class="sec" id="elfo" aria-labelledby="elfo-t">
-    <div class="slip hang" style="--r:1.5deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><h2 id="elfo-t">El elfo</h2></div>
+    <div class="slip hang" style="--r:1.5deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><div class="ink slipped"><div class="safe"><h2 id="elfo-t">El elfo</h2></div></div></div>
     <div class="elf">
       <div class="note n-draw hang" style="--pin:58% 5%">
         <img class="paper" src="assets/plates/kid-drawing.webp" alt="Dibujo infantil a ceras de Dobby: un elfo sonriente de orejas grandes y túnica." width="636" height="572" loading="lazy">
@@ -475,7 +489,7 @@
   </section>
 
   <section class="sec" id="redes" aria-labelledby="redes-t">
-    <div class="slip hang" style="--r:-1deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><h2 id="redes-t">Sígueme</h2></div>
+    <div class="slip hang" style="--r:-1deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><div class="ink slipped"><div class="safe"><h2 id="redes-t">Sígueme</h2></div></div></div>
     <ul class="socials">
       <li><a class="magnet" href="https://www.tiktok.com/@dobbydev" target="_blank" rel="noopener"><span class="ico i-tiktok" aria-hidden="true"></span>TikTok <small>@dobbydev</small></a></li>
       <li><a class="magnet magnet--red" href="https://www.instagram.com/dobbygd/" target="_blank" rel="noopener"><span class="ico i-ig" aria-hidden="true"></span>Instagram <small>@dobbygd</small></a></li>
