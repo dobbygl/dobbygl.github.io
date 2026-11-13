@@ -187,7 +187,6 @@
   .chores li:nth-child(2){--d:.45s}.chores li:nth-child(3){--d:.9s}
 
   .n-draw{aspect-ratio:636/572}
-  .n-draw .paper{filter:drop-shadow(0 6px 10px var(--shadow))}
 
   .shelf{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 18px;margin:0;padding:0;list-style:none}
   .shelf .polaroid{--ar:250/210}
@@ -240,10 +239,11 @@
   /* ============ SECCIONES: lo que hay más abajo en la puerta ============ */
   .sec{max-width:1120px;margin:0 auto;padding:clamp(72px,9vw,128px) 16px 0}
   .slip{position:relative;container-type:inline-size;aspect-ratio:812/332;width:min(100%,420px);margin:0 auto clamp(28px,4vw,48px);--r:-2deg}
+  .slip > .paper{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 6px 10px var(--shadow))}
   .slip h2{position:absolute;inset:22% 8% 20%;margin:0;display:flex;align-items:center;justify-content:center;
     font-family:var(--hand);font-weight:600;color:var(--ink);font-size:13cqi;line-height:1;rotate:-2deg}
 
-  .game{display:grid;gap:26px;align-items:center;margin:0 0 clamp(56px,7vw,96px)}
+  .game{display:grid;gap:44px;align-items:center;margin:0 0 clamp(56px,7vw,96px)}
   .game .shots{position:relative;padding:14px 8px 0}
   .game .polaroid{--ar:16/10;width:min(100%,560px);margin:0 auto}
   .game .polaroid + .polaroid{position:absolute;right:-5%;bottom:-24%;width:40%;--ar:16/10}
@@ -372,7 +372,7 @@
 
 <main>
   <section class="sec" id="juegos" aria-labelledby="juegos-t">
-    <div class="slip hang"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px var(--shadow))"><h2 id="juegos-t">Mis juegos</h2></div>
+    <div class="slip hang"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><h2 id="juegos-t">Mis juegos</h2></div>
 
     <article class="game" id="cozy-adventure">
       <div class="shots">
@@ -453,7 +453,7 @@
   </section>
 
   <section class="sec" id="elfo" aria-labelledby="elfo-t">
-    <div class="slip hang" style="--r:1.5deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px var(--shadow))"><h2 id="elfo-t">El elfo</h2></div>
+    <div class="slip hang" style="--r:1.5deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><h2 id="elfo-t">El elfo</h2></div>
     <div class="elf">
       <div class="note n-draw hang" style="--pin:58% 5%">
         <img class="paper" src="assets/plates/kid-drawing.webp" alt="Dibujo infantil a ceras de Dobby: un elfo sonriente de orejas grandes y túnica." width="636" height="572" loading="lazy">
@@ -475,7 +475,7 @@
   </section>
 
   <section class="sec" id="redes" aria-labelledby="redes-t">
-    <div class="slip hang" style="--r:-1deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px var(--shadow))"><h2 id="redes-t">Sígueme</h2></div>
+    <div class="slip hang" style="--r:-1deg"><img class="paper" src="assets/plates/note-follow.webp" alt="" width="812" height="332"><h2 id="redes-t">Sígueme</h2></div>
     <ul class="socials">
       <li><a class="magnet" href="https://www.tiktok.com/@dobbydev" target="_blank" rel="noopener"><span class="ico i-tiktok" aria-hidden="true"></span>TikTok <small>@dobbydev</small></a></li>
       <li><a class="magnet magnet--red" href="https://www.instagram.com/dobbygd/" target="_blank" rel="noopener"><span class="ico i-ig" aria-hidden="true"></span>Instagram <small>@dobbygd</small></a></li>
